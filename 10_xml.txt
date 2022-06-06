@@ -1,0 +1,66 @@
+Studentclass.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyXML
+{
+    public class Studentclass
+    {
+        public string Name { get; set; }
+        public string Password { get; set; }
+    }
+
+}
+
+Form1.cs
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+
+namespace MyXML
+{
+    public partial class Form1 : Form
+    {
+        XmlSerializer xs;
+        List<Studentclass> ls;
+
+        public Form1()
+        {
+            InitializeComponent();
+            ls = new List<Studentclass>();
+            xs = new XmlSerializer(typeof(List<Studentclass>));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("users.xml", FileMode.Open);
+            ls = (List<Studentclass>)xs.Deserialize(fs);
+            dataGridView1.DataSource = ls;
+            fs.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("users.xml", FileMode.Create);
+            Studentclass sc = new Studentclass();
+            sc.Name = textBox1.Text;
+            sc.Password = textBox2.Text;
+            ls.Add(sc);
+            xs.Serialize(fs, ls);
+            fs.Close();
+        }
+    }
+}
+

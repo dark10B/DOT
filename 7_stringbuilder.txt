@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StringBuilder1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            StringBuilder s1 = new StringBuilder("Arbaaz Khan", 90);
+            for (int i = 0; i < s1.Length; i++)
+            {
+                Console.WriteLine(s1[i]);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Original String is " + s1);
+            s1.Replace("Arbaaz", "ARBAAZ");
+            Console.WriteLine("Replace String is " + s1);
+            Console.Read();
+        }
+    }
+}
+
+

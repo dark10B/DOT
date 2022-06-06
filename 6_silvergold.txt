@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SilverGoldClass
+{
+    class customer
+    {
+        public double discount()
+        {
+            return 20;
+        }
+    }
+
+    class silver : customer
+    {
+        public double discount()
+        {
+            return 10;
+        }
+    }
+    class gold : customer
+    {
+        public double discount()
+        {
+            return 30;
+        }
+    }
+    class myprogram
+    {
+        static void Main(string[] args)
+        {
+            customer obj= new customer();
+            silver obj2= new silver();
+            gold obj3= new gold();
+            Console.WriteLine("Enter Customer Name");
+            string s = Console.ReadLine();
+
+            Console.WriteLine("Customer Class discount");
+            Console.WriteLine(obj.discount());
+            Console.WriteLine("Silver Class discount");
+            Console.WriteLine(obj2.discount());
+            Console.WriteLine("Gold Class discount");
+            Console.WriteLine(obj3.discount());
+
+            Console.ReadLine();
+        }
+    }
+
+}
